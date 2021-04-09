@@ -6,7 +6,7 @@ import { PropTypes } from "prop-types";
 const RadioButton = (props) => {
   RadioButton.propTypes = {
     radioChoice: PropTypes.array,
-    checked: PropTypes.bool,
+    checked: PropTypes.number,
     setChecked: PropTypes.func,
     setDisplayDropdown: PropTypes.func,
   };
