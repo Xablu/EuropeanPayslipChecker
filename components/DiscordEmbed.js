@@ -15,7 +15,7 @@ const DiscordEmbed = (channelInfo) => {
     //   method: "GET",
     //   headers: {
     //     Authorization:
-    //       "Bot ODI5NjY4NjY1MDY1NDcyMDUx.YG7fKA.Ub60f9PJCl9H7h9SjMybpve4jHM",
+    //       "",
     //   },
     // })
     // .then((response) => response.json())
