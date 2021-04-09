@@ -1,11 +1,12 @@
 import React from "react";
-import { Button, Text, View, PropTypes } from "react-native";
+import { Button, Text, View } from "react-native";
+import { PropTypes } from "prop-types";
 import { Image } from "react-native";
 import styles from "../styles";
 export var HomePic = require("../assets/HomePic.png");
 const Home = ({ navigation }) => {
   Home.propTypes = {
-    navigation: PropTypes.navigation.isRequired,
+    navigation: PropTypes.object.isRequired,
   };
   return (
     <View flex={1}>

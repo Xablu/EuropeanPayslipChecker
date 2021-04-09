@@ -1,5 +1,5 @@
 import React from "react";
-import { Text } from "react-native";
+import { Text, PropTypes } from "react-native";
 import styles from "../styles";
 
 export const DetailLabel = (props) => {

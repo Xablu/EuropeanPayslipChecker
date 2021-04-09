@@ -1,15 +1,16 @@
 import React, { useState } from "react";
-import { View, TouchableOpacity, Linking, PropTypes } from "react-native";
+import { View, TouchableOpacity, Linking } from "react-native";
 import { Icon } from "react-native-elements";
 import * as Typography from "../components/Typography";
 import styles from "../styles";
 import Collapsible from "react-native-collapsible";
+import { PropTypes } from "prop-types";
 
-CollapseView.propTypes = {
-  collContent: PropTypes.Component,
-  title: PropTypes.string,
-};
 export const CollapseView = (props) => {
+  CollapseView.propTypes = {
+    collContent: PropTypes.Component,
+    title: PropTypes.string,
+  };
   const [isCollapsed, setIsCollapsed] = useState(true);
   let collapseIcon;
   isCollapsed == true

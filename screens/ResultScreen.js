@@ -1,5 +1,5 @@
 import React from "react";
-import { View, ScrollView, Linking, PropTypes } from "react-native";
+import { View, ScrollView, Linking } from "react-native";
 import { calculatePayslip } from "../components/PayslipCalculator";
 import styles from "../styles";
 import * as Typography from "../components/Typography";
@@ -8,11 +8,12 @@ import { ResultCard } from "../components/ResultCard";
 import { Footer } from "../components/Footer";
 import { CollapseView } from "../components/CollapseView";
 import DiscordEmbed from "../components/DiscordEmbed";
+import { PropTypes } from "prop-types";
 
 const ResultScreen = ({ navigation, route }) => {
   ResultScreen.propTypes = {
     route: PropTypes.route,
-    navigation: PropTypes.navigation.isRequired,
+    navigation: PropTypes.object.isRequired,
   };
 
   let employeeLocation = route.params.employeeLocation;

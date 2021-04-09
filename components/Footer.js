@@ -1,6 +1,6 @@
 import React from "react";
 import { ImageBackground } from "react-native";
-import { Text, View, Image, PropTypes } from "react-native";
+import { Text, View, Image } from "react-native";
 import styles from "../styles";
 export var HomePic = require("../assets/HomePic.png");
 import { ResultFooterText, ResultFooterTitle } from "../components/Typography";

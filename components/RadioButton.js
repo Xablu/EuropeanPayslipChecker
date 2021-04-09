@@ -1,9 +1,15 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-import PropTypes from "react";
 import styles from "../styles";
+import { PropTypes } from "prop-types";
 
 const RadioButton = (props) => {
+  RadioButton.propTypes = {
+    radioChoice: PropTypes.array,
+    checked: PropTypes.bool,
+    setChecked: PropTypes.func,
+    setDisplayDropdown: PropTypes.func,
+  };
   return (
     <View>
       <View style={styles.radioBtnContainer}>

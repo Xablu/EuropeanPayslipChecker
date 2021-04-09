@@ -1,10 +1,11 @@
 import React from "react";
-import { ImageBackground, PropTypes } from "react-native";
+import { ImageBackground } from "react-native";
 import { View } from "react-native";
 import styles from "../styles";
 export var HomePic = require("../assets/HomePic.png");
 import { ResultCardLocation, ResultCardLabel } from "../components/Typography";
 import { Icon } from "react-native-elements";
+import { PropTypes } from "prop-types";
 
 export const ResultCard = (props) => {
   ResultCard.propTypes = {

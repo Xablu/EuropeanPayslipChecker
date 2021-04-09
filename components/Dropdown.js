@@ -1,8 +1,9 @@
 import React from "react";
-import { View, Text, PropTypes } from "react-native";
+import { View, Text } from "react-native";
 
 import { Picker } from "@react-native-community/picker";
 import styles from "../styles";
+import { PropTypes } from "prop-types";
 
 export const Dropdown = (props) => {
   Dropdown.propTypes = {

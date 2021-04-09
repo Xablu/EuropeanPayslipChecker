@@ -1,13 +1,17 @@
 import React, { useState } from "react";
-import { Text, View, Button, ScrollView, PropTypes } from "react-native";
+import { Text, View, Button, ScrollView, Platform } from "react-native";
 import styles from "../styles";
 import RadioButton from "../components/RadioButton";
 import countries from "../assets/countries";
 import { CheckBox, Input } from "react-native-elements";
 import { Dropdown } from "../components/Dropdown";
-import { Platform } from "react-native";
+import { PropTypes } from "prop-types";
 
 const InputScreen = ({ navigation }) => {
+  InputScreen.propTypes = {
+    navigation: PropTypes.object.isRequired,
+  };
+
   const [checked, setChecked] = useState();
   var radioChoice = ["Employee", "Employer"];
   const [selectedNationality, setSelectedNationality] = useState();
@@ -193,9 +197,6 @@ const InputScreen = ({ navigation }) => {
       </ScrollView>
     </View>
   );
-};
-InputScreen.propTypes = {
-  navigation: PropTypes.navigation.isRequired,
 };
 
 export default InputScreen;
