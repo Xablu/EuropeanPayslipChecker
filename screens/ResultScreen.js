@@ -60,9 +60,10 @@ const ResultScreen = ({ navigation, route }) => {
       />
     </View>
   );
+  let userInfo = employeeNationality + workLocation;
   let collCommunityInfo = (
     <View style={[styles.detailTextContainer, styles.collapseContent]}>
-      <DiscordEmbed />
+      <DiscordEmbed userInfo={userInfo} />
     </View>
   );
 
@@ -87,7 +88,9 @@ const ResultScreen = ({ navigation, route }) => {
             <Typography.DetailLabel content={workCountryLabel} />
             <Typography.DetailText content={countries.getName(workLocation)} />
             <Typography.DetailLabel content={timePeriodLabel} />
-            <Typography.DetailText content={period} />
+            <Typography.DetailText
+              content={period == " " ? "None selected" : period}
+            />
           </View>
           <View>
             <CollapseView

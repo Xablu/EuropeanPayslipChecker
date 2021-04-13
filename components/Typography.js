@@ -2,6 +2,15 @@ import React from "react";
 import { Text, PropTypes } from "react-native";
 import styles from "../styles";
 
+export const HomeTitle = (props) => {
+  return <Text style={styles.title}>{props.content}</Text>;
+};
+export const HomeText = (props) => {
+  return <Text style={styles.homeText}>{props.content}</Text>;
+};
+export const HomeTextBottom = (props) => {
+  return <Text style={styles.homeTextBottom}>{props.content}</Text>;
+};
 export const DetailLabel = (props) => {
   return <Text style={styles.detailLabel}>{props.content}</Text>;
 };
@@ -25,4 +34,10 @@ export const ResultCardInformation = (props) => {
 };
 export const ResultCardLink = (props) => {
   return <Text style={styles.resultCardInformation}>{props.content}</Text>;
+};
+export const DiscordUserName = (props) => {
+  return <Text style={styles.discordUserName}>{props.content}</Text>;
+};
+export const DiscordMessage = (props) => {
+  return <Text style={styles.discordMessage}>{props.content}</Text>;
 };

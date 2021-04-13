@@ -14,12 +14,12 @@ const InputScreen = ({ navigation }) => {
 
   const [checked, setChecked] = useState();
   var radioChoice = ["Employee", "Employer"];
-  const [selectedNationality, setSelectedNationality] = useState();
-  const [selectedEmployeeCountry, setSelectedEmployeeCountry] = useState();
-  const [selectedCompanyLocation, setSelectedCompanyLocation] = useState();
-  const [selectedWorkLocation, setSelectedWorkLocation] = useState();
-  const [selectedTimePeriod, setSelectedTimePeriod] = useState();
-  const [timeAmount, setTimeAmount] = useState();
+  const [selectedNationality, setSelectedNationality] = useState("");
+  const [selectedEmployeeCountry, setSelectedEmployeeCountry] = useState("");
+  const [selectedCompanyLocation, setSelectedCompanyLocation] = useState("");
+  const [selectedWorkLocation, setSelectedWorkLocation] = useState("");
+  const [selectedTimePeriod, setSelectedTimePeriod] = useState("");
+  const [timeAmount, setTimeAmount] = useState("");
 
   const [displayDropdowns, setDisplayDropdown] = useState(false);
   const [checkboxChecked, setCheckboxChecked] = useState(false);
@@ -80,7 +80,7 @@ const InputScreen = ({ navigation }) => {
         companyLocation: selectedCompanyLocation,
         workLocation: selectedWorkLocation,
         role: radioChoice[checked],
-        period: timeAmount + selectedTimePeriod,
+        period: timeAmount + " " + selectedTimePeriod,
       });
     }
   };

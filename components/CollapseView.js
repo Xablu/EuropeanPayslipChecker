@@ -8,7 +8,8 @@ import { PropTypes } from "prop-types";
 
 export const CollapseView = (props) => {
   CollapseView.propTypes = {
-    collContent: PropTypes.Component,
+    collContent: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+
     title: PropTypes.string,
   };
   const [isCollapsed, setIsCollapsed] = useState(true);

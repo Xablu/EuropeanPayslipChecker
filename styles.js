@@ -80,6 +80,10 @@ const styles = StyleSheet.create({
   homeText: {
     fontSize: 16,
   },
+  homeTextBottom: {
+    paddingTop: 20,
+    fontSize: 16,
+  },
   subTitle: {
     fontSize: 19,
     paddingVertical: 16,
@@ -115,11 +119,16 @@ const styles = StyleSheet.create({
   resultCardLink: {
     color: "blue",
   },
+  discordMessage: {},
+  discordUserName: {
+    fontWeight: "bold",
+  },
 
   //Buttons & Labels
   startButton: {
     paddingTop: 32,
     borderRadius: 10,
+    padding: 30,
   },
   radioTitle: {
     fontSize: 18,
