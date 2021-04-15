@@ -1,9 +1,8 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { ActivityIndicator, View, FlatList, Text } from "react-native";
-import { set } from "react-native-reanimated";
-import messages from "../assets/discord-test";
+import { ActivityIndicator, View, Text } from "react-native";
 import { DiscordMessage, DiscordUserName } from "./Typography";
+import styles from "../styles";
 
 const DiscordEmbed = (props) => {
   const channelSelector = (channelInfo) => {
@@ -24,6 +23,35 @@ const DiscordEmbed = (props) => {
         return "831113010697338911";
     }
   };
+  const monthPicker = (date) => {
+    let monthNumber = date.substring(0, 2);
+    switch (monthNumber) {
+      case "01":
+        return "January";
+      case "02":
+        return "February";
+      case "03":
+        return "March";
+      case "04":
+        return "April";
+      case "05":
+        return "May";
+      case "06":
+        return "June";
+      case "07":
+        return "July";
+      case "08":
+        return "August";
+      case "09":
+        return "September";
+      case "10":
+        return "October";
+      case "11":
+        return "November";
+      case "12":
+        return "December";
+    }
+  };
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([
     {
@@ -36,13 +64,12 @@ const DiscordEmbed = (props) => {
     fetch("https://discord.com/api/channels/" + channel + "/messages", {
       method: "GET",
       headers: {
-        Authorization:
-          " Bot ODI5OTk4NTY5MTgzMjQ4NDE2.YHASZw.WItG016-Z5On15O4-adJI7djTFo",
+        Authorization: "BOT_API_KEY",
       },
     })
       .then((response) => response.json())
       .then((json) => handleData(json))
-      .catch((e) => console.log("ERROR" + e))
+      .catch((e) => setData({ messageContent: e, sender: "Fetch Error" }))
       .finally(() => setLoading(false));
   };
   useEffect(() => {
@@ -52,36 +79,49 @@ const DiscordEmbed = (props) => {
   const handleData = (data) => {
     console.log(data);
     var messages = data.map((message) => {
-      if (message.content !== "") {
+      if (message.content !== "  ") {
         var cleanMsg = {
           messageContent: message.content,
           sender: message.author.username,
+          date: message.timestamp.substring(5, 10),
+          time: message.timestamp.substring(11, 16),
         };
         console.log("clean" + cleanMsg.sender);
         return cleanMsg;
       }
     });
     setData(messages);
+    console.log(JSON.stringify(data));
   };
 
   return isLoading ? (
     <View>
-      <Text>Loading...</Text>
+      <ActivityIndicator />
     </View>
   ) : (
     <View>
-      <Text>Here is what our community is talking about right now:</Text>
+      <Text style={{ fontSize: 14, textAlign: "center", paddingBottom: 10 }}>
+        Here is what{" "}
+        <Text style={{ color: "blue", textDecorationLine: "underline" }}>
+          our community{" "}
+        </Text>
+        is talking about right now:
+      </Text>
       {data.map((message, key) => {
-        console.log("MSG" + message);
         return (
-          <View key={key}>
+          <View style={styles.discordMsg} key={key}>
             <View flexDirection="row">
-              <DiscordUserName content={message.messageContent} />
-              <View style={{ alignSelf: "flex-end", alignItems: "flex-end" }}>
-                <Text>00:00</Text>
-              </View>
+              <DiscordUserName content={message.sender} />
+              <View flexDirection="row"></View>
             </View>
-            <DiscordMessage />
+            <DiscordMessage content={message.messageContent} />
+            <View flexDirection="row" style={{ alignSelf: "flex-end" }}>
+              <Text style={styles.timestamp}>
+                {" "}
+                {monthPicker(message.date) + " " + message.date.substring(3, 5)}
+              </Text>
+              <Text style={styles.timestamp}> @ {message.time}</Text>
+            </View>
           </View>
         );
       })}

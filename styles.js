@@ -7,6 +7,16 @@ const styles = StyleSheet.create({
     backgroundColor: "rgb(240, 240, 240)",
     flexDirection: "column",
   },
+  discordMsg: {
+    borderColor: "#000",
+    borderWidth: 1,
+    borderRadius: 5,
+    padding: 5,
+    marginBottom: 2,
+  },
+  discordContainer: {
+    paddingVertical: 10,
+  },
   scroll: {
     backgroundColor: "rgb(240, 240, 240)",
     paddingBottom: 80,
@@ -70,6 +80,9 @@ const styles = StyleSheet.create({
   collapseIcon: {},
   collapseContent: { backgroundColor: "#fff" },
   //Text
+  timestamp: {
+    fontWeight: "bold",
+  },
   title: {
     paddingVertical: 16,
     color: "#000",
@@ -122,6 +135,8 @@ const styles = StyleSheet.create({
   discordMessage: {},
   discordUserName: {
     fontWeight: "bold",
+    alignSelf: "center",
+    textAlign: "left",
   },
 
   //Buttons & Labels
@@ -131,7 +146,7 @@ const styles = StyleSheet.create({
     padding: 30,
   },
   radioTitle: {
-    fontSize: 18,
+    fontSize: 16,
     paddingVertical: 5,
     paddingBottom: 10,
   },
@@ -145,7 +160,7 @@ const styles = StyleSheet.create({
   },
   radioBtnLabel: {
     padding: 5,
-    fontSize: 18,
+    fontSize: 16,
     paddingLeft: 15,
   },
   dropdown: {
