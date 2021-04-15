@@ -9,7 +9,7 @@ jobs:
     - name: SonarQube Scan
       uses: kitabisa/sonarqube-action@master
       with:
-        host: ${{ secrets.SONARQUBE_HOST }}
+        host: https://codequality.xablu.com
         login: ${{ secrets.SONARQUBE_TOKEN }}
         projectKey: ${{ secrets.SONARQUBE_KEY }}
         projectName: ${{ secrets.SONARQUBE_NAME }}
