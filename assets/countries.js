@@ -3,7 +3,7 @@
 const countries = [
   { name: "The Netherlands", nationality: "Dutch", value: "nl" },
   { name: "France", nationality: "French", value: "fr" },
-  { name: "Italy", nationality: "Italian", value: "it" },
+  { name: "Germany", nationality: "German", value: "de" },
 ];
 const timePeriods = ["Weeks", "Months", "Years"];
 

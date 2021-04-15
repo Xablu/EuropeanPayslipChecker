@@ -64,7 +64,7 @@ const DiscordEmbed = (props) => {
     fetch("https://discord.com/api/channels/" + channel + "/messages", {
       method: "GET",
       headers: {
-        Authorization: "BOT_API_KEY",
+        Authorization: " BOTAPIKEY",
       },
     })
       .then((response) => response.json())
@@ -76,22 +76,17 @@ const DiscordEmbed = (props) => {
     fetchData();
   }, []);
 
-  const handleData = (data) => {
-    console.log(data);
-    var messages = data.map((message) => {
-      if (message.content !== "  ") {
-        var cleanMsg = {
-          messageContent: message.content,
-          sender: message.author.username,
-          date: message.timestamp.substring(5, 10),
-          time: message.timestamp.substring(11, 16),
-        };
-        console.log("clean" + cleanMsg.sender);
-        return cleanMsg;
-      }
+  const handleData = (fetchedData) => {
+    var messages = fetchedData.map((message) => {
+      var cleanMsg = {
+        messageContent: message.content,
+        sender: message.author.username,
+        date: message.timestamp.substring(5, 10),
+        time: message.timestamp.substring(11, 16),
+      };
+      return cleanMsg;
     });
     setData(messages);
-    console.log(JSON.stringify(data));
   };
 
   return isLoading ? (
@@ -108,7 +103,7 @@ const DiscordEmbed = (props) => {
         is talking about right now:
       </Text>
       {data.map((message, key) => {
-        return (
+        return message.messageContent !== "" ? (
           <View style={styles.discordMsg} key={key}>
             <View flexDirection="row">
               <DiscordUserName content={message.sender} />
@@ -123,6 +118,8 @@ const DiscordEmbed = (props) => {
               <Text style={styles.timestamp}> @ {message.time}</Text>
             </View>
           </View>
+        ) : (
+          <View key={key}></View>
         );
       })}
     </View>
