@@ -35,7 +35,7 @@ const ResultScreen = ({ navigation, route }) => {
   var companyLocationLabel;
   var workCountryLabel;
   var timePeriodLabel = "Time period";
-  route.params.role === "Employee"
+  route.params.role == "Employee"
     ? ((nationalityLabel = "My nationality"),
       (locationLabel = "Place I live"),
       (companyLocationLabel = "Location of the company I work for"),
