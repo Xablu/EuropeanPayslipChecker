@@ -1,0 +1,27 @@
+on: 
+  pull_request:
+    branches:
+      - main
+name: Dotnet build, Sonarscanner and PR decoration
+jobs:
+  sonarscanner-pr-decoration:
+    runs-on: ubuntu-latest
+    name: Dotnet build, Sonarscanner and PR decoration
+    steps:
+      - uses: actions/checkout@v2
+      - uses: xablu/github-pr-decoration-action@main
+        name: Dotnet build and SonarScanner for .NET 5 with pull request decoration support
+        with:
+          # The key of the SonarQube project
+          sonarProjectKey: ${{ secrets.SONARQUBE_NAME }}
+          # The name of the SonarQube project
+          sonarProjectName:  ${{ secrets.SONARQUBE_NAME }}
+          # The SonarQube server URL. For SonarCloud, skip this setting.
+          sonarHostname:  https://codequality.xablu.com
+          # Pass github event pull_request head sha
+          sonarBeginArguments: /d:sonar.scm.revision=${{ github.event.pull_request.head.sha }}
+          # Enable or disable Sonarscan (true=enable, false=disable)
+          sonarEnableScan: true
+        env:
+          SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
