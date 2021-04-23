@@ -10,6 +10,8 @@ jobs:
     name: Dotnet build, Sonarscanner and PR decoration
     steps:
       - uses: actions/checkout@v2
+      - name: Show token
+        run: echo $SONAR_TOKEN
       - uses: xablu/github-pr-decoration-action@main
         name: Dotnet build and SonarScanner for .NET 5 with pull request decoration support
         with:
