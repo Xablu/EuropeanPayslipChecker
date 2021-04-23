@@ -20,7 +20,7 @@ jobs:
           # The SonarQube server URL. For SonarCloud, skip this setting.
           sonarHostname:  https://codequality.xablu.com
           # Pass github event pull_request head sha
-          sonarBeginArguments: -D:sonar.scm.revision=${{ github.event.pull_request.head.sha }}
+          sonarBeginArguments: -Dsonar.scm.revision=${{ github.event.pull_request.head.sha }}
           # Enable or disable Sonarscan (true=enable, false=disable)
           sonarEnableScan: true
           # Get sonartoken
