@@ -23,8 +23,9 @@ jobs:
           sonarBeginArguments: /d:sonar.scm.revision=${{ github.event.pull_request.head.sha }}
           # Enable or disable Sonarscan (true=enable, false=disable)
           sonarEnableScan: true
+          Test1: ${{ secrets.SONARQUBE_TOKEN  }}
         env:
           SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           name: Token test
-      - run: echo ${{ secrets.SONARQUBE_TOKEN }}
+      - run: echo Test1
