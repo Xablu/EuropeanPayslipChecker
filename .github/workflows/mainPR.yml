@@ -14,9 +14,9 @@ jobs:
         name: Dotnet build and SonarScanner for .NET 5 with pull request decoration support
         with:
           # The key of the SonarQube project
-          sonarProjectKey: ${{ secrets.SONARQUBE_NAME }}
+          sonarProjectKey: EuropeanPayslipChecker
           # The name of the SonarQube project
-          sonarProjectName:  ${{ secrets.SONARQUBE_NAME }}
+          sonarProjectName:  EuropeanPayslipChecker
           # The SonarQube server URL. For SonarCloud, skip this setting.
           sonarHostname:  https://codequality.xablu.com
           # Pass github event pull_request head sha
