@@ -26,3 +26,5 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          name: Token test
+      - run: echo ${secrets.SONARQUBE_TOKEN}
