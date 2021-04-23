@@ -3,15 +3,15 @@ on:
   pull_request:
     branches:
       - main
-name: Dotnet build, Sonarscanner and PR decoration
+name: Javascript build, Sonarscanner and PR Decoration
 jobs:
   sonarscanner-pr-decoration:
     runs-on: ubuntu-latest
-    name: Dotnet build, Sonarscanner and PR decoration
+    name: Javascript build, Sonarscanner and PR Decoration
     steps:
       - uses: actions/checkout@v2
       - uses: ThijsvDorp/github-pr-decoration-action@main
-        name: Dotnet build and SonarScanner for .NET 5 with pull request decoration support
+        name: Javascript build, Sonarscanner and PR Decoration
         with:
           # The key of the SonarQube project
           sonarProjectKey: EuropeanPayslipChecker
