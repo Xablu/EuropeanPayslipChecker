@@ -25,5 +25,5 @@ jobs:
           sonarEnableScan: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
+          SONAR_TOKEN: dfc475ce12870e52a0a722e6cc520f9f5a47cee8
 
