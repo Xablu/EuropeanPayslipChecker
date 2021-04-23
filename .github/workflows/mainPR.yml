@@ -10,7 +10,7 @@ jobs:
     name: Dotnet build, Sonarscanner and PR decoration
     steps:
       - uses: actions/checkout@v2
-      - uses: ThijsvDorp/github-pr-decoration-actionn@main
+      - uses: ThijsvDorp/github-pr-decoration-action@main
         name: Dotnet build and SonarScanner for .NET 5 with pull request decoration support
         with:
           # The key of the SonarQube project
