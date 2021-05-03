@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, View, Button, ScrollView, Platform } from "react-native";
+import { Text, View, Button, ScrollView } from "react-native";
 import styles from "../styles";
 import RadioButton from "../components/RadioButton";
 import countries from "../assets/countries";
@@ -23,10 +23,6 @@ const InputScreen = ({ navigation }) => {
 
   const [displayDropdowns, setDisplayDropdown] = useState(false);
   const [checkboxChecked, setCheckboxChecked] = useState(false);
-
-  const [pickerOpacity, setPickerOpacity] = useState();
-  const [iOS, setIOS] = useState();
-  const [label, setLabel] = useState("firstvalue");
 
   //Switch labels with radio button
   var nationalityLabel;
@@ -55,15 +51,6 @@ const InputScreen = ({ navigation }) => {
     workCountryLabel = "";
     periodLabelCheckbox = "";
   }
-  const checkIfIOS = () => {
-    if (Platform.OS === "ios") {
-      if (pickerOpacity == 0) {
-        setIOS(true);
-      } else {
-        setIOS(false);
-      }
-    }
-  };
   const handleSubmit = () => {
     if (
       selectedNationality == null ||
@@ -96,7 +83,6 @@ const InputScreen = ({ navigation }) => {
             style={styles.dropDownsContainer}
           >
             <Dropdown
-              ios={iOS}
               itemType={"nationality"}
               selectedValue={selectedNationality}
               onValueChange={(itemValue, itemIndex) =>
@@ -106,7 +92,6 @@ const InputScreen = ({ navigation }) => {
               placeholder={nationalityLabel}
             />
             <Dropdown
-              ios={iOS}
               itemType="name"
               selectedValue={selectedEmployeeCountry}
               onValueChange={(itemValue, itemIndex) =>
@@ -116,7 +101,6 @@ const InputScreen = ({ navigation }) => {
               placeholder={locationLabel}
             />
             <Dropdown
-              ios={iOS}
               itemType="name"
               selectedValue={selectedCompanyLocation}
               onValueChange={(itemValue, itemIndex) =>
@@ -126,7 +110,6 @@ const InputScreen = ({ navigation }) => {
               placeholder={companyLocationLabel}
             />
             <Dropdown
-              ios={iOS}
               itemType="name"
               selectedValue={selectedWorkLocation}
               onValueChange={(itemValue, itemIndex) =>
@@ -160,7 +143,6 @@ const InputScreen = ({ navigation }) => {
 
           <View flex={3} style={{ paddingBottom: 20 }}>
             <Dropdown
-              ios={iOS}
               style={{ paddingBottom: 20 }}
               selectedValue={selectedTimePeriod}
               onValueChange={(itemValue, itemIndex) =>

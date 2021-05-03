@@ -3,8 +3,12 @@ import { useEffect, useState } from "react";
 import { ActivityIndicator, View, Text, Linking } from "react-native";
 import { DiscordMessage, DiscordUserName } from "./Typography";
 import styles from "../styles";
+import { PropTypes } from "prop-types";
 
 const DiscordEmbed = (props) => {
+  DiscordEmbed.propTypes = {
+    userInfo: PropTypes.string,
+  };
   const channelSelector = (channelInfo) => {
     switch (channelInfo) {
       case "nlfr":

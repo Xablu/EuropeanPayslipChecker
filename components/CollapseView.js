@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, TouchableOpacity, Linking } from "react-native";
+import { View, TouchableOpacity } from "react-native";
 import { Icon } from "react-native-elements";
 import * as Typography from "../components/Typography";
 import styles from "../styles";
