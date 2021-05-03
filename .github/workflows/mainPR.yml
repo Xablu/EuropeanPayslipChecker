@@ -1,0 +1,29 @@
+on: 
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+name: Javascript build, Sonarscanner and PR Decoration
+jobs:
+  sonarscanner-pr-decoration:
+    runs-on: ubuntu-latest
+    name: Javascript build, Sonarscanner and PR Decoration
+    steps:
+      - uses: actions/checkout@v2
+      - uses: Xablu/github-pr-decoration-action-Javascript@main
+        name: Javascript build, Sonarscanner and PR Decoration
+        with:
+          # The key of the SonarQube project
+          sonarProjectKey: EuropeanPayslipChecker
+          # The name of the SonarQube project
+          sonarProjectName:  "EuropeanPayslipChecker"
+          # The SonarQube server URL. For SonarCloud, skip this setting.
+          sonarHostname:  https://codequality.xablu.com
+          # Pass github event pull_request head sha
+          sonarBeginArguments: -Dsonar.scm.revision=${{ github.event.pull_request.head.sha }}
+          # Enable or disable Sonarscan (true=enable, false=disable)
+          sonarEnableScan: true
+          # Get sonartoken
+          sonarToken: ${{ secrets.SONARQUBE_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
