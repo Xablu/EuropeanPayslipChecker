@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { ActivityIndicator, View, Text } from "react-native";
+import { ActivityIndicator, View, Text, Linking } from "react-native";
 import { DiscordMessage, DiscordUserName } from "./Typography";
 import styles from "../styles";
 
@@ -54,17 +54,14 @@ const DiscordEmbed = (props) => {
   };
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([
-    {
-      messageContent: "Loading..",
-      sender: "",
-    },
+    { messageContent: "Loading...", sender: "" },
   ]);
   const fetchData = () => {
     const channel = channelSelector(props.userInfo);
     fetch("https://discord.com/api/channels/" + channel + "/messages", {
       method: "GET",
       headers: {
-        Authorization: " BOTAPIKEY",
+        Authorization: "Bot KEY",
       },
     })
       .then((response) => response.json())
@@ -89,6 +86,9 @@ const DiscordEmbed = (props) => {
     setData(messages);
   };
 
+  async function openLink() {
+    await Linking.openURL("https://discord.gg/4WbHCBU85g");
+  }
   return isLoading ? (
     <View>
       <ActivityIndicator />
@@ -97,31 +97,40 @@ const DiscordEmbed = (props) => {
     <View>
       <Text style={{ fontSize: 14, textAlign: "center", paddingBottom: 10 }}>
         Here is what{" "}
-        <Text style={{ color: "blue", textDecorationLine: "underline" }}>
+        <Text
+          style={{ color: "blue", textDecorationLine: "underline" }}
+          onPress={() => openLink()}
+        >
           our community{" "}
         </Text>
         is talking about right now:
       </Text>
-      {data.map((message, key) => {
-        return message.messageContent !== "" ? (
-          <View style={styles.discordMsg} key={key}>
-            <View flexDirection="row">
-              <DiscordUserName content={message.sender} />
-              <View flexDirection="row"></View>
+      {!isLoading ? (
+        data.map((message, key) => {
+          return message.messageContent !== "" ? (
+            <View style={styles.discordMsg} key={key}>
+              <View flexDirection="row">
+                <DiscordUserName content={message.sender} />
+                <View flexDirection="row"></View>
+              </View>
+              <DiscordMessage content={message.messageContent} />
+              <View flexDirection="row" style={{ alignSelf: "flex-end" }}>
+                <Text style={styles.timestamp}>
+                  {" "}
+                  {monthPicker(message.date) +
+                    " " +
+                    message.date.substring(3, 5)}
+                </Text>
+                <Text style={styles.timestamp}> @ {message.time}</Text>
+              </View>
             </View>
-            <DiscordMessage content={message.messageContent} />
-            <View flexDirection="row" style={{ alignSelf: "flex-end" }}>
-              <Text style={styles.timestamp}>
-                {" "}
-                {monthPicker(message.date) + " " + message.date.substring(3, 5)}
-              </Text>
-              <Text style={styles.timestamp}> @ {message.time}</Text>
-            </View>
-          </View>
-        ) : (
-          <View key={key}></View>
-        );
-      })}
+          ) : (
+            <View key={key}></View>
+          );
+        })
+      ) : (
+        <View></View>
+      )}
     </View>
   );
 };
